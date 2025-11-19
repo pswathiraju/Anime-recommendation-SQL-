@@ -72,3 +72,16 @@ JOIN Ratings USING(anime_id)
 GROUP BY anime_id
 ORDER BY avg_rating DESC;
 
+-- Most popular genre
+SELECT genre, COUNT(*) AS count
+FROM Anime
+GROUP BY genre
+ORDER BY count DESC;
+
+-- User’s top-rated anime (Example: user_id = 1)
+SELECT A.title, R.rating
+FROM Ratings R
+JOIN Anime A ON R.anime_id = A.anime_id
+WHERE R.user_id = 1
+ORDER BY rating DESC;
+
